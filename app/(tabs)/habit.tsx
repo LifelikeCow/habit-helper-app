@@ -24,9 +24,11 @@ export default function habit(){
     );
 
     const handleSave = async() => {
-        await saveHabits(selected);
-        setSavedHabits([...selected,...savedHabits]);
-        //setSelected([]);
+        const updated = [...new Set([...savedHabits, ...selected])];
+
+        setSavedHabits(updated);
+        await saveHabits(updated);
+        setSelected([]);
     }
 
     const handleEdit = () => {
@@ -37,15 +39,20 @@ export default function habit(){
     //made during editing
     const handleCancel = () => {
         setEditing(false);
+        setSelected([]);
     }
     //filter keeps items where condition is TRUE
-    const handleDelete = () => {
-        setSavedHabits(prev =>
-            prev.filter(h => !selected.includes(h))
-        );
-        setSelected([]);
-    };
+    const handleDelete = async () => {
 
+        const updated = savedHabits.filter(h => !selected.includes(h));
+
+        setSavedHabits(updated);
+
+        await saveHabits(updated);
+
+        setSelected([]);
+    }
+    //Delete function isnt saving changes to savedHabits <--fix--
     return (
         <View style={styles.container}>
             <View style={styles.centerBlock}>
@@ -56,13 +63,15 @@ export default function habit(){
                     <Button title="Back" onPress={() => router.back()}/>
                 </View>
                 <View style={[styles.floatingButton, { right: 15 }]}>
-                    <Button title={isEditing ? "Delete!" : "Save"} onPress={isEditing ? handleDelete : handleSave} disabled={selected.length === 0} />
+                    <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleSave} disabled={selected.length === 0} />
                 </View>
-                <View style={[styles.floatingButton, { right: 90 }]}>
-                    <Button title="Edit" onPress={handleEdit}/>
-                </View>
+                {!isEditing && (
+                    <View style={[styles.floatingButton, { right: 105 }]}>
+                        <Button title="Edit" onPress={handleEdit}/>
+                    </View>
+                )}
                 {isEditing && (
-                    <View style={[styles.floatingButton, {right: 150}]}>
+                    <View style={[styles.floatingButton, {right: 105}]}>
                         <Button title="Cancel" onPress={handleCancel}/>
                     </View>
                 )}
