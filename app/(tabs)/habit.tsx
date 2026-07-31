@@ -5,12 +5,16 @@ import { View, Text } from "react-native";
 import styles from "../../styles/globalStyles";
 import { useState, useCallback } from "react";
 import { saveHabits, loadHabits } from "@/services/habitService";
+import SettingModal from "@/components/Habits/HabitSettings";
+
 export default function habit(){
     const router = useRouter();
     const [selected, setSelected] = useState<string[]>([]); //selected habit's pointer
     const [savedHabits, setSavedHabits] = useState<string[]>([]); //saved habit storage
-    const [isEditing, setEditing] = useState<boolean>(false);
-    
+    const [isEditing, setEditing] = useState<boolean>(false);   //boolean edit mode
+    const [isSetting, setSetting] = useState<boolean>(false);   //boolean setting modal
+
+
 
     useFocusEffect(
         useCallback(() => {
@@ -22,7 +26,9 @@ export default function habit(){
         fetchHabits();
       }, [])
     );
-
+    const handleAdd = () => {
+        setSetting(true);
+    }
     const handleSave = async() => {
         const updated = [...new Set([...savedHabits, ...selected])];
 
@@ -75,7 +81,7 @@ export default function habit(){
                         <Button title="Cancel" onPress={handleCancel}/>
                     </View>
                 )}
-
+                
             </View>
         </View>
     );
