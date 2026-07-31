@@ -69,20 +69,15 @@ export default function habit(){
                     <Button title="Back" onPress={() => router.back()}/>
                 </View>
                 <View style={[styles.floatingButton, { right: 15 }]}>
-                    <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleAdd} disabled={selected.length === 0} />
+                    <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleSave} disabled={selected.length === 0} />
                 </View>
-                
-                
-                <SettingModal visible={isSetting} onClose={() => router.back()}/>
-
                 {!isEditing && (
                     <View style={[styles.floatingButton, { right: 105 }]}>
                         <Button title="Edit" onPress={handleEdit}/>
                     </View>
                 )}
-
                 {isEditing && (
-                    <View style={[styles.floatingButton, { right: 105 }]}>
+                    <View style={[styles.floatingButton, {right: 105}]}>
                         <Button title="Cancel" onPress={handleCancel}/>
                     </View>
                 )}
