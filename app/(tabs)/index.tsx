@@ -39,9 +39,22 @@ export default function HomeScreen() {
     </View>
   );
 }
-// Working on edit button. and handleEdit function, savedhabits changes
+//WORK ON DURATION/QUANTITY SETTING AND CALENDER PROGRESS
+
+// work on adding in duration 
+// and or quantity of habit when adding a habit.(ex: 10min daily)
+// also setting to add when to get reminder to increase challenge after x days
+
+// work on simple calendar that counts up all the habits and how often
+//habits are cleared each day , changes hue of green depending on #
+//
+
+//7 day reminder after completing habit (add more time? quantity? ect,)
+
 // Check note on line 34 habitlist.tsx
 // currently trying 'local asyncstorage' want to move on to-server backend
+
+
 
 //Second project for website . reccomendation website for movies/games/music/books/ect.
 // a reccomendation website for stories/themes/ect 

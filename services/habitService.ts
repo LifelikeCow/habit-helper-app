@@ -1,11 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const saveHabits = async (habits: string[]) => {
-  const stored = await loadHabits();
-  const merged = [...stored, ...habits];
+  //const stored = await loadHabits();
+  //const merged = [...stored, ...habits];
 
-  const unique = [...new Set(merged)];
-  await AsyncStorage.setItem("HABITS", JSON.stringify(unique));
+  //const unique = [...new Set(merged)];
+  await AsyncStorage.setItem("HABITS", JSON.stringify(habits));
 };
 
 
