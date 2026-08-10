@@ -58,7 +58,6 @@ export default function habit(){
 
         setSelected([]);
     }
-    //Delete function isnt saving changes to savedHabits <--fix--
     return (
         <View style={styles.container}>
             <View style={styles.centerBlock}>
@@ -69,8 +68,12 @@ export default function habit(){
                     <Button title="Back" onPress={() => router.back()}/>
                 </View>
                 <View style={[styles.floatingButton, { right: 15 }]}>
-                    <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleSave} disabled={selected.length === 0} />
+                    <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleAdd} disabled={selected.length === 0} />
                 </View>
+                
+                
+                <SettingModal visible={isSetting} onClose={() => setSetting(false)}/>
+
                 {!isEditing && (
                     <View style={[styles.floatingButton, { right: 105 }]}>
                         <Button title="Edit" onPress={handleEdit}/>

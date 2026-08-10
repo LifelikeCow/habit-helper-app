@@ -1,40 +1,79 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
-    button: {
-        padding: 12,
-        borderRadius: 8,
-        flexBasis: "50%",
-        alignItems: "center",
-        justifyContent: "center",
 
+export const styles = {
+  primary: StyleSheet.create({
+    button: {
+      padding: 12,
+      borderRadius: 8,
+      flexBasis: "50%",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#c96826",
     },
 
     text: {
-        color: "white",
-        fontSize: 16,
-        fontWeight: 600,
-
-    },
-
-    primary: {
-        backgroundColor: "#c96826",
-    },
-
-    secondary: {
-        backgroundColor: "#c92e26",
-
-    },
-    danger: {
-
-        backgroundColor: "red",
+      color: "white",
+      fontSize: 16,
+      fontWeight: "600",
     },
 
     pressed: {
-        opacity: 0.7,
+      opacity: 0.7,
     },
 
     disabled: {
-        opacity: 0.4,
+      opacity: 0.4,
     },
-});
+  }),
+
+  secondary: StyleSheet.create({
+    button: {
+      padding: 12,
+      borderRadius: 8,
+      flexBasis: "50%",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#c92e26",
+    },
+
+    text: {
+      color: "white",
+      fontSize: 16,
+      fontWeight: "600",
+    },
+
+    pressed: {
+      opacity: 0.7,
+    },
+
+    disabled: {
+      opacity: 0.4,
+    },
+  }),
+
+  danger: StyleSheet.create({
+    button: {
+      padding: 12,
+      borderRadius: 8,
+      flexBasis: "50%",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "red",
+    },
+
+    text: {
+      color: "white",
+      fontSize: 10,
+      fontWeight: "600",
+    },
+
+    pressed: {
+      opacity: 0.7,
+    },
+
+    disabled: {
+      opacity: 0.4,
+    },
+  }),
+};

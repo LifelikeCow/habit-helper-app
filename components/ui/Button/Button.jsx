@@ -12,13 +12,29 @@ export default function Button({
       onPress={onPress}
       disabled={disabled}
       style={({ pressed }) => [
-        styles.button,
+        styles[variant].button,
         styles[variant],
-        pressed && styles.pressed,
-        disabled && styles.disabled,
+        pressed && styles[variant].pressed,
+        disabled && styles[variant].disabled,
       ]}
     >
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles[variant].text}>{title}</Text>
     </Pressable>
   );
 }
+
+//WORK ON ^
+//change the button component to implement variants that change the entire ui
+// of the button. (USed for settings widgets)
+
+//<Pressable
+//  style={[
+//    styles[variant].button,
+//    pressed && styles[variant].pressed,
+//    disabled && styles[variant].disabled,
+//  ]}
+//>
+//  <Text style={styles[variant].text}>
+//    {title}
+//  </Text>
+//  </Pressable
