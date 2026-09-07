@@ -5,10 +5,11 @@ import { useRouter, useFocusEffect } from "expo-router";
 import { loadHabits } from "@/services/habitService";
 import { useState, useCallback } from "react";
 import HabitTrackerList from "@/components/Habits/HabitTrackerList";
+import type { Habit } from "@/constants/Habit";
 export default function habitSchedule() {
     const router = useRouter();
-    const [habits, setHabits] = useState<string[]>([]);
-    const [selected, setSelected] = useState<string[]>([]);
+    const [habits, setHabits] = useState<Habit[]>([]);
+    const [selected, setSelected] = useState<Habit[]>([]);
 
     useFocusEffect(
     useCallback(() => {
@@ -21,14 +22,14 @@ export default function habitSchedule() {
   }, [])
 );
 
-    const handleToggle = (name: string) => {
-    setSelected((prev) =>
-      prev.includes(name)
-        ? prev.filter((h) => h !== name) // uncheck
-        : [...prev, name]               // check
-    );
-  };
 
+  const handleToggle = (habit: Habit) => {
+      setSelected(prev =>
+        prev.some(h => h.name === habit.name)
+          ? prev.filter(h => h.name !== habit.name)
+          : [...prev, habit]
+      );
+    };
     return (
         <View style={styles.container}>
             <View style={styles.centerBlock}>

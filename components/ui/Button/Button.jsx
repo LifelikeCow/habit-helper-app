@@ -24,17 +24,6 @@ export default function Button({
 }
 
 //WORK ON ^
-//change the button component to implement variants that change the entire ui
-// of the button. (USed for settings widgets)
-
-//<Pressable
-//  style={[
-//    styles[variant].button,
-//    pressed && styles[variant].pressed,
-//    disabled && styles[variant].disabled,
-//  ]}
-//>
-//  <Text style={styles[variant].text}>
-//    {title}
-//  </Text>
-//  </Pressable
+//cleaning up the settings modal ui and
+//need to seperate global styles css(layout/positioning/ect) 
+// from ui/component css styles

@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Habit } from "@/constants/Habit";
 
-export const saveHabits = async (habits: string[]) => {
+export const saveHabits = async (habits: Habit[]) => {
   //const stored = await loadHabits();
   //const merged = [...stored, ...habits];
 
@@ -9,7 +10,7 @@ export const saveHabits = async (habits: string[]) => {
 };
 
 
-export const loadHabits = async () => {
+export const loadHabits = async (): Promise<Habit[]> => {
   const data = await AsyncStorage.getItem("HABITS");
   return data ? JSON.parse(data) : [];
 };

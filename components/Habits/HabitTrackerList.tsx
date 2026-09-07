@@ -1,10 +1,11 @@
 import { View, Text, Pressable, ScrollView } from "react-native";
 import styles from "@/styles/globalStyles";
+import type { Habit } from "@/constants/Habit";
 
 type Props = {
-  habits: string[];
-  selected: string[];
-  onToggle: (name: string) => void;
+  habits: Habit[];
+  selected: Habit[];
+  onToggle: (habit: Habit) => void;
 };
 
 export default function HabitList({ habits, selected, onToggle }: Props) {
@@ -21,15 +22,15 @@ export default function HabitList({ habits, selected, onToggle }: Props) {
 
           return (
             <Pressable
-              key={habit}
+              key={habit.name}
               style={[
                 styles.habitItem,
                 isSelected && { backgroundColor: "green" },
               ]}
-              onPress={() => onToggle(habit)}
+              onPress={() => onToggle(habit.name)}
             >
               <Text style={styles.habitText}>
-                {habit} {isSelected ? "✓" : ""}
+                {habit.name} {isSelected ? "✓" : ""}
               </Text>
             </Pressable>
           );

@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     backgroundColor: "#1A1818"
   },
+  //--------------------------
   // block positionings
   centerBlock: {
     flex: 1,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-
+  //---------------------
   // Button stylings  
   buttonGroup: {
     width: "80%",
@@ -54,7 +55,26 @@ const styles = StyleSheet.create({
     zIndex: 999,
     elevation: 10,
   },
-    //change button
+
+  bottomButtonGroup: {
+    position: "absolute",
+    bottom: 20,
+    left: 15,
+    right: 15,
+
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 60,
+  },
+  settingsRowButtonGroup: {
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "center",
+    width: "50%",
+    left:100
+  },
+  //------------------------
+  //habit-list 
   habitList: {
     maxHeight: 300,
   },
@@ -72,7 +92,7 @@ const styles = StyleSheet.create({
   habitListContainer: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#1A1818",
+    backgroundColor: "rgba(26, 24, 24, 0.5)",
   },
 
   habitTitle: {
@@ -95,26 +115,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
+  //------------------------
+  //modal settings
   modalOverlay: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.75)",
     justifyContent: "center",
     alignItems: "center",
   },
 
   modalContent: {
-    width: "45%",
+    width: "25%",
+    height: "70%",
     padding: 20,
     borderRadius: 15,
-    backgroundColor: "white",
+    backgroundColor: "#2A2A2A",
     alignItems: "center",
   },
 
   modalTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 22,
     marginBottom: 20,
+    color: "white"
   },
 
   widget: {
@@ -123,13 +145,9 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     borderWidth: 1,
     borderRadius: 10,
+    backgroundColor: "white"
   },
-  settingsRow: {
-    flexDirection: "row",
-    gap: 10,
-    justifyContent: "center",
-    width: "100%",
-  },
+  
 });
 
 export default styles;

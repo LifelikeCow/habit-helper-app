@@ -6,35 +6,42 @@ import styles from "../../styles/globalStyles";
 import { useState, useCallback } from "react";
 import { saveHabits, loadHabits } from "@/services/habitService";
 import SettingModal from "@/components/Habits/HabitSettings";
+import type { Habit } from "@/constants/Habit";
+
 
 export default function habit(){
     const router = useRouter();
-    const [selected, setSelected] = useState<string[]>([]); //selected habit's pointer
-    const [savedHabits, setSavedHabits] = useState<string[]>([]); //saved habit storage
+    const [selected, setSelected] = useState<Habit[]>([]); //selected habit's pointer
+    const [savedHabits, setSavedHabits] = useState<Habit[]>([]); //saved habit storage
     const [isEditing, setEditing] = useState<boolean>(false);   //boolean edit mode
     const [isSetting, setSetting] = useState<boolean>(false);   //boolean setting modal
 
 
 
     useFocusEffect(
-        useCallback(() => {
+    useCallback(() => {
         const fetchHabits = async () => {
-          const data = await loadHabits();
-          setSavedHabits(data || []);
+
+        
+        const data = await loadHabits();
+        setSavedHabits(data);
         };
-    
+
         fetchHabits();
-      }, [])
+    }, [])
     );
     const handleAdd = () => {
         setSetting(true);
     }
+    //FIX
     const handleSave = async() => {
         const updated = [...new Set([...savedHabits, ...selected])];
 
         setSavedHabits(updated);
         await saveHabits(updated);
         setSelected([]);
+
+        setSetting(false);
     }
 
     const handleEdit = () => {
@@ -72,7 +79,7 @@ export default function habit(){
                 </View>
                 
                 
-                <SettingModal visible={isSetting} onClose={() => setSetting(false)}/>
+                <SettingModal visible={isSetting} onClose={() => setSetting(false)} onSave={handleSave} />
 
                 {!isEditing && (
                     <View style={[styles.floatingButton, { right: 105 }]}>

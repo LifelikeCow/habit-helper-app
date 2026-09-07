@@ -56,15 +56,15 @@ export const styles = {
     button: {
       padding: 12,
       borderRadius: 8,
-      flexBasis: "50%",
+      flexBasis: "25%",
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "red",
+      backgroundColor: "#c96826",
     },
 
     text: {
       color: "white",
-      fontSize: 10,
+      fontSize: 16,
       fontWeight: "600",
     },
 
