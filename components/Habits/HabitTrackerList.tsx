@@ -18,7 +18,7 @@ export default function HabitList({ habits, selected, onToggle }: Props) {
         contentContainerStyle={styles.listContent}
       >
         {habits.map((habit) => {
-          const isSelected = selected.includes(habit);
+          const isSelected = selected.some(h => h.name === habit.name);
 
           return (
             <Pressable
@@ -27,7 +27,7 @@ export default function HabitList({ habits, selected, onToggle }: Props) {
                 styles.habitItem,
                 isSelected && { backgroundColor: "green" },
               ]}
-              onPress={() => onToggle(habit.name)}
+              onPress={() => onToggle(habit)}
             >
               <Text style={styles.habitText}>
                 {habit.name} {isSelected ? "✓" : ""}

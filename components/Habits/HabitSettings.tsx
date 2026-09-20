@@ -18,6 +18,9 @@ export default function HabitSettingModal({ visible, onClose, onSave }: Props) {
   
 const [isPressed,setPress] = useState<string>("Daily");
 
+const handlePress = () => {
+
+}
 
   return (
     <Modal
@@ -68,6 +71,9 @@ const [isPressed,setPress] = useState<string>("Daily");
 //--add list elements into scrolltab/bar for quantity and duration widgets <--curr focus
 //--change habit constant to become obj? that holds data aswell (not just name)
 
+//Bug 
+// changing type String Habits to Habits[]
+// When re-entering add habit screen - savedJabits data is lost and emptied
 
 
 

@@ -33,12 +33,20 @@ export default function habit(){
     const handleAdd = () => {
         setSetting(true);
     }
-    //FIX
+    //FIX 9/14/26 - i mean it looks good. it might be wrong because duplicate habits
+    //with same name but diff settings may be added.
     const handleSave = async() => {
-        const updated = [...new Set([...savedHabits, ...selected])];
+        //const updated = [...new Set([...savedHabits, ...selected])];
 
-        setSavedHabits(updated);
+        const updated = [
+        ...new Map(
+            [...savedHabits, ...selected].map(habit => [habit.name, habit])
+        ).values()
+        ];
+
+
         await saveHabits(updated);
+        setSavedHabits(updated);
         setSelected([]);
 
         setSetting(false);
@@ -57,7 +65,9 @@ export default function habit(){
     //filter keeps items where condition is TRUE
     const handleDelete = async () => {
 
-        const updated = savedHabits.filter(h => !selected.includes(h));
+        const updated = savedHabits.filter(
+            h => !selected.some(s => s.name === h.name)
+        );
 
         setSavedHabits(updated);
 

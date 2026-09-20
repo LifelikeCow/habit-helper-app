@@ -22,8 +22,3 @@ export default function Button({
     </Pressable>
   );
 }
-
-//WORK ON ^
-//cleaning up the settings modal ui and
-//need to seperate global styles css(layout/positioning/ect) 
-// from ui/component css styles

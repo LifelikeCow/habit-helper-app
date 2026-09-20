@@ -41,6 +41,7 @@ export default function HomeScreen() {
 }
 //WORK ON DURATION/QUANTITY SETTING AND CALENDER PROGRESS
 
+
 // work on adding in duration 
 // and or quantity of habit when adding a habit.(ex: 10min daily)
 // also setting to add when to get reminder to increase challenge after x days
