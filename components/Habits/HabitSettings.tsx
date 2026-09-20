@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button/Button";
 import { useRouter } from "expo-router";
 import styles from "../../styles/globalStyles";
 import { useState } from "react";
+import DropDownBar from "@/components/ui/DropDown/dropdown";
 
 //need extra props for this component,that implements a useState that will affect
 //the switches for the widgets (frequency,duration,quantity)
@@ -16,10 +17,44 @@ type Props = {
 
 export default function HabitSettingModal({ visible, onClose, onSave }: Props) {
   
-const [isPressed,setPress] = useState<string>("Daily");
+    const [isPressed,setPress] = useState<string>("Daily");
+    const [quantity, setQuantity] = useState("Once");
+    const [frequency, setFrequency] = useState("Every day");
+    const [duration, setDuration] = useState("10 minutes");
+
+    const quantities = [
+        "Once",
+        "Twice",
+        "Three times",
+        "Four times",
+        "Five times",
+        "Six times",
+        "Seven times",
+        "Eight times",
+        "Nine times",
+        "Ten times"
+    ];
+
+    const frequencies = [
+        "Every day",
+        "Every week",
+        "3 times a week",
+        "5 times a week"
+    ];
+
+    const durations = [
+        "5 minutes",
+        "10 minutes",
+        "15 minutes",
+        "20 minutes",
+        "30 minutes",
+        "45 minutes",
+        "60 minutes"
+    ];
 
 const handlePress = () => {
 
+  
 }
 
   return (
@@ -48,6 +83,12 @@ const handlePress = () => {
 
           <View style={styles.widget}>
             <Text>Quantity</Text>
+              <DropDownBar
+                label="Quantity"
+                value={quantity}
+                elements={quantities}
+                onSelect={setQuantity}
+              />
           </View>
 
           <View style={styles.widget}>
@@ -66,15 +107,11 @@ const handlePress = () => {
   );
 }
 
-//WORKING ON-?>  
+
+//WORKING ON-?> * Creating dropdown menu ui component for widgets *
 //--creating group switch button for frequency widget--
-//--add list elements into scrolltab/bar for quantity and duration widgets <--curr focus
-//--change habit constant to become obj? that holds data aswell (not just name)
-
-//Bug 
-// changing type String Habits to Habits[]
-// When re-entering add habit screen - savedJabits data is lost and emptied
-
+//--add list elements into scrolltab/bar for quantity and 
+// duration widgets <--curr focus
 
 
 //reminder y/n widget
