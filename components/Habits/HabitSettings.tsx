@@ -82,7 +82,6 @@ const handlePress = () => {
           </View>
 
           <View style={styles.widget}>
-            <Text>Quantity</Text>
               <DropDownBar
                 label="Quantity"
                 value={quantity}
@@ -92,7 +91,12 @@ const handlePress = () => {
           </View>
 
           <View style={styles.widget}>
-            <Text>Duration</Text>
+            <DropDownBar
+                label="Duration"
+                value={duration}
+                elements={durations}
+                onSelect={setDuration}
+              />
           </View>
 
 
