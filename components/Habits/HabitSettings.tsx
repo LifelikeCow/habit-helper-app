@@ -11,17 +11,21 @@ import DropDownBar from "@/components/ui/DropDown/dropdown";
 type Props = {
     visible: boolean;
     onClose: () => void;
-    onSave: () => void;
+    onSave: (settings: {
+        frequency: string;
+        quantity: string;
+        duration: string;
+    }) => void;
 };
 
 
 export default function HabitSettingModal({ visible, onClose, onSave }: Props) {
   
-    const [isPressed,setPress] = useState<string>("Daily");
     const [quantity, setQuantity] = useState("Once");
-    const [frequency, setFrequency] = useState("Every day");
+    const [frequency, setFrequency] = useState("Daily");
     const [duration, setDuration] = useState("10 minutes");
-
+    
+    
     const quantities = [
         "Once",
         "Twice",
@@ -52,11 +56,6 @@ export default function HabitSettingModal({ visible, onClose, onSave }: Props) {
         "60 minutes"
     ];
 
-const handlePress = () => {
-
-  
-}
-
   return (
     <Modal
       visible={visible}
@@ -74,10 +73,10 @@ const handlePress = () => {
           <View style={styles.widget}>
             <Text>Frequency</Text>
             <View style={styles.settingsRowButtonGroup}>
-              <Button title={"Daily"} variant= "secondary" onPress={() => setPress("Daily")} disabled={isPressed === "Daily"}/>
-              <Button title={"Weekly"} variant= "secondary" onPress={() => setPress("Weekly")} disabled={isPressed === "Weekly"}/>
-              <Button title={"Monthly"} variant= "secondary" onPress={() => setPress("Monthly")} disabled={isPressed === "Monthly"}/>
-              <Button title={"Yearly"} variant= "secondary" onPress={() => setPress("Yearly")} disabled={isPressed === "Yearly"}/>
+              <Button title={"Daily"} variant= "secondary" onPress={() => setFrequency("Daily")} disabled={frequency === "Daily"}/>
+              <Button title={"Weekly"} variant= "secondary" onPress={() => setFrequency("Weekly")} disabled={frequency === "Weekly"}/>
+              <Button title={"Monthly"} variant= "secondary" onPress={() => setFrequency("Monthly")} disabled={frequency === "Monthly"}/>
+              <Button title={"Yearly"} variant= "secondary" onPress={() => setFrequency("Yearly")} disabled={frequency === "Yearly"}/>
             </View>
           </View>
 
@@ -102,7 +101,7 @@ const handlePress = () => {
 
           <View style={styles.bottomButtonGroup}>
             <Button title="close" variant= "danger" onPress={onClose}/>
-            <Button title="save" variant= "danger" onPress={onSave}/>
+            <Button title="save" variant= "danger" onPress={onSave({frequency,quantity,duration})}/>
           </View>
           
         </View>
@@ -116,7 +115,8 @@ const handlePress = () => {
 //--creating group switch button for frequency widget--
 //--add list elements into scrolltab/bar for quantity and 
 // duration widgets <--curr focus
-
+//once added all the selected widgets and dropdown scrolltab should 
+//change the habit object once in the habit[]
 
 //reminder y/n widget
 

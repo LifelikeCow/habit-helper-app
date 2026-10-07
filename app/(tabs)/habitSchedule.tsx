@@ -6,13 +6,20 @@ import { loadHabits } from "@/services/habitService";
 import { useState, useCallback } from "react";
 import HabitTrackerList from "@/components/Habits/HabitTrackerList";
 import type { Habit } from "@/constants/Habit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function habitSchedule() {
     const router = useRouter();
     const [habits, setHabits] = useState<Habit[]>([]);
     const [selected, setSelected] = useState<Habit[]>([]);
 
+    const clearHabits = async () => {
+    await AsyncStorage.removeItem("HABITS");
+    console.log("HABITS CLEARED");
+    };
+
     useFocusEffect(
     useCallback(() => {
+        clearHabits();
     const fetchHabits = async () => {
       const data = await loadHabits();
       setHabits(data || []);

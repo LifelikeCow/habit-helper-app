@@ -39,7 +39,6 @@ export default StyleSheet.create({
 
     dropdown: {
         marginTop: 4,
-
         borderWidth: 1,
         borderColor: "#ccc",
         borderRadius: 10,
@@ -52,7 +51,7 @@ export default StyleSheet.create({
     },
 
     scrollView: {
-        maxHeight: 200,
+        maxHeight: 75,
     },
 
     option: {

@@ -15,7 +15,7 @@ export default function HomeScreen() {
 
         <View style={styles.buttonGrid}>
           <AppButton title="Start Habit" onPress={() => router.push("/habit")} />
-          <AppButton title="Schedule/Habit Calendar/ Checklist" onPress={() => router.push("/about")} />
+          <AppButton title="Schedule/Habit Calendar/ Checklist" onPress={() => router.push("/summary")} />
           <AppButton title="Daily Motivation" onPress={() => router.push("/dailyMotivation")} />
           <AppButton title="Habit Check Progress" onPress={() => router.push("/habitSchedule")} />
         </View>
@@ -27,7 +27,7 @@ export default function HomeScreen() {
           style={styles.image}
           />
           <TextInput style={styles.text} placeholder="Email" />
-          <Link style={styles.text} href={"/about"}>Next Screen</Link>
+          <Link style={styles.text} href={"/summary"}>Next Screen</Link>
 
           <Button
             title="click me!!"

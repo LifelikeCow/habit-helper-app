@@ -19,22 +19,26 @@ export default function habit(){
 
 
     useFocusEffect(
-    useCallback(() => {
-        const fetchHabits = async () => {
+  useCallback(() => {
+    console.log("HABIT SCREEN FOCUSED");
 
-        
-        const data = await loadHabits();
-        setSavedHabits(data);
-        };
+    const fetchHabits = async () => {
+      //console.log("BEFORE LOAD");
 
-        fetchHabits();
-    }, [])
-    );
+      const data = await loadHabits();
+
+      //console.log("AFTER LOAD:", data);
+
+      setSavedHabits(data);
+    };
+
+    fetchHabits();
+  }, [])
+);
     const handleAdd = () => {
         setSetting(true);
     }
-    //FIX 9/14/26 - i mean it looks good. it might be wrong because duplicate habits
-    //with same name but diff settings may be added.
+
     const handleSave = async() => {
         //const updated = [...new Set([...savedHabits, ...selected])];
 
@@ -62,6 +66,7 @@ export default function habit(){
         setEditing(false);
         setSelected([]);
     }
+
     //filter keeps items where condition is TRUE
     const handleDelete = async () => {
 
@@ -88,7 +93,6 @@ export default function habit(){
                     <Button title={isEditing ? "Delete!" : "Add"} onPress={isEditing ? handleDelete : handleAdd} disabled={selected.length === 0} />
                 </View>
                 
-                
                 <SettingModal visible={isSetting} onClose={() => setSetting(false)} onSave={handleSave} />
 
                 {!isEditing && (
@@ -106,4 +110,3 @@ export default function habit(){
         </View>
     );
 }
-    
